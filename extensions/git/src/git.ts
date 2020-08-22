@@ -1719,6 +1719,16 @@ export class Repository {
 		}
 	}
 
+	async addSubmodule(url: string): Promise<void> {
+		const args = ['submodule', 'add', url];
+		await this.run(args);
+	}
+
+	async submoduleAdd(url: string): Promise<void> {
+		const args = ['submodule', 'add', url];
+		await this.run(args);
+	}
+
 	getStatus(limit = 5000): Promise<{ status: IFileStatus[]; didHitLimit: boolean; }> {
 		return new Promise<{ status: IFileStatus[]; didHitLimit: boolean; }>((c, e) => {
 			const parser = new GitStatusParser();

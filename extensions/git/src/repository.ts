@@ -308,7 +308,7 @@ export const enum Operation {
 	Stash = 'Stash',
 	CheckIgnore = 'CheckIgnore',
 	GetObjectDetails = 'GetObjectDetails',
-	SubmoduleUpdate = 'SubmoduleUpdate',
+	Submodule = 'Submodule',
 	RebaseAbort = 'RebaseAbort',
 	RebaseContinue = 'RebaseContinue',
 	FindTrackingBranches = 'GetTracking',
@@ -1315,6 +1315,10 @@ export class Repository implements Disposable {
 
 	async applyStash(index?: number): Promise<void> {
 		return await this.run(Operation.Stash, () => this.repository.applyStash(index));
+	}
+
+	async addSubmodule(url: string): Promise<void> {
+		return await this.run(Operation.Submodule, () => this.repository.addSubmodule(url));
 	}
 
 	async getCommitTemplate(): Promise<string> {

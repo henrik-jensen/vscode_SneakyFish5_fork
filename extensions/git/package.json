@@ -402,6 +402,16 @@
         "category": "Git"
       },
       {
+        "command": "git.addSubmodule",
+        "title": "%command.addSubmodule%",
+        "category": "Git"
+      },
+      {
+        "command": "git.updateSubmodule",
+        "title": "%command.updateSubmodule%",
+        "category": "Git"
+      },
+      {
         "command": "git.timeline.openDiff",
         "title": "%command.timelineOpenDiff%",
         "icon": "$(compare-changes)",
@@ -727,6 +737,14 @@
         },
         {
           "command": "git.stashDrop",
+          "when": "config.git.enabled && !git.missing && gitOpenRepositoryCount != 0"
+        },
+        {
+          "command": "git.addSubmodule",
+          "when": "config.git.enabled && !git.missing && gitOpenRepositoryCount != 0"
+        },
+        {
+          "command": "git.updateSubmodule",
           "when": "config.git.enabled && !git.missing && gitOpenRepositoryCount != 0"
         },
         {

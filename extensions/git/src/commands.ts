@@ -2382,6 +2382,22 @@ export class CommandCenter {
 		return result && result.stash;
 	}
 
+	@command('git.addSubmodule', { repository: true })
+	async addSubmodule(repository: Repository): Promise<void> {
+		//const submoduleList = repository.submodules.map(s => s.path)
+		const url = await window.showInputBox({
+			placeHolder: localize('repository url', "Repository URL"),
+			prompt: localize('provide repository url', "Please provide the Repository URL"),
+			ignoreFocusOut: true
+		});
+
+		if (!url) {
+			return;
+		}
+
+		await repository.addSubmodule(url);
+	}
+
 	@command('git.timeline.openDiff', { repository: false })
 	async timelineOpenDiff(item: TimelineItem, uri: Uri | undefined, _source: string) {
 		if (uri === undefined || uri === null || !GitTimelineItem.is(item)) {
