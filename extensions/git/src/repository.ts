@@ -1321,6 +1321,10 @@ export class Repository implements Disposable {
 		return await this.run(Operation.Submodule, () => this.repository.addSubmodule(url));
 	}
 
+	async updateSubmodule(submoduleName: string): Promise<void> {
+		return await this.run(Operation.Submodule, () => this.repository.updateSubmodule(url));
+	}
+
 	async getCommitTemplate(): Promise<string> {
 		return await this.run(Operation.GetCommitTemplate, async () => this.repository.getCommitTemplate());
 	}

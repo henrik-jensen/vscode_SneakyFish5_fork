@@ -1724,8 +1724,13 @@ export class Repository {
 		await this.run(args);
 	}
 
-	async submoduleAdd(url: string): Promise<void> {
-		const args = ['submodule', 'add', url];
+	async updateSubmodule(submoduleName: string): Promise<void> {
+		const args = ['submodule', 'update', '--remote'];
+
+		if (submoduleName) {
+			args.push(submoduleName);
+		}
+
 		await this.run(args);
 	}
 
